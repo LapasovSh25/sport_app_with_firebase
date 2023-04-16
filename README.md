@@ -3,4 +3,4 @@
 APP INFO:
 # Sing in and Sing up with Firebase.
 # Store users info on the FireStore.
-# Show data infos from FireStore on the seperated builderS 
+# Show data infos from FireStore on the seperated builders 
