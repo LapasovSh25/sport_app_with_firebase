@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -136,11 +137,10 @@ class _SingUpPageState extends State<SingUpPage> {
           ),
           InkWell(
             onTap: () async {
-              await context
-                  .read<SingUpProvider>()
-                  .singUp()
-                  .then((value) {
+              await context.read<SingUpProvider>().singUp().then((value) async {
                 if (value == true) {
+                  await FirebaseAuth.instance.currentUser!.updateDisplayName(
+                      context.watch<SingUpProvider>().nameController.text);
                   Navigator.push(
                       context,
                       MaterialPageRoute(

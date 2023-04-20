@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -80,7 +81,6 @@ class _HomePageState extends State<HomePage> {
                               child: Text("Malumot topilmadi!"),
                             );
                           } else {
-                            
                             return Row(
                               children: [
                                 const Icon(
@@ -107,7 +107,9 @@ class _HomePageState extends State<HomePage> {
                                           fontSize: 12, color: Colors.white),
                                     ),
                                     Text(
-                                      data[1]['name'].toString(),
+                                      FirebaseAuth
+                                          .instance.currentUser!.displayName
+                                          .toString(),
                                       style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w700,
@@ -332,8 +334,9 @@ class _HomePageState extends State<HomePage> {
                                                   )
                                                 ],
                                               ),
-                                              progressColor: const Color.fromRGBO(
-                                                  241, 73, 133, 1),
+                                              progressColor:
+                                                  const Color.fromRGBO(
+                                                      241, 73, 133, 1),
                                             )
                                           ],
                                         ),
